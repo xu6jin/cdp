@@ -1,32 +1,27 @@
 package exception
 
 import (
-	"github.com/xu6jin/cdp/code"
+	"xu6jin/cdp/code"
 )
 
 type Exception interface {
 	error
 	Code() code.Code
-	Errors() []error
 }
 
 type exception struct {
 	code code.Code
-	errs []error
+	err  error
 }
 
 func (e *exception) Error() string {
-	return e.code.Text()
+	return e.err.Error()
 }
 
 func (e *exception) Code() code.Code {
 	return e.code
 }
 
-func (e *exception) Errors() []error {
-	return e.errs
-}
-
-func New(c code.Code, errs ...error) Exception {
-	return &exception{code: c, errs: errs}
+func New(c code.Code, err error) Exception {
+	return &exception{code: c, err: err}
 }
