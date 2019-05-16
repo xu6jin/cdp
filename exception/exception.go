@@ -1,7 +1,7 @@
 package exception
 
 import (
-	"xu6jin/cdp/code"
+	"github.com/xu6jin/cdp/code"
 )
 
 type Exception interface {
