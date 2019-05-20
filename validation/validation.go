@@ -1,10 +1,10 @@
 package validation
 
 type Validator interface {
-	Validate() error
+	Validate() []error
 }
 
-func Validate(v interface{}) error {
+func Validate(v interface{}) []error {
 	if _, ok := v.(Validator); !ok {
 		return nil
 	}
