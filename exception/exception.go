@@ -5,6 +5,7 @@ import "github.com/xu6jin/cdp/exception/errors"
 type Exception interface {
 	Status() int
 	Errors() []error
+	Format() []string
 }
 
 type exception struct {
@@ -18,6 +19,14 @@ func (e *exception) Errors() []error {
 
 func (e *exception) Status() int {
 	return e.status
+}
+
+func (e *exception) Format() []string {
+	format := make([]string, 0)
+	for _, err := range e.errs {
+		format = append(format, err.Error())
+	}
+	return format
 }
 
 func New(status int, errs ...error) Exception {
