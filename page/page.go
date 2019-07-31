@@ -1,10 +1,8 @@
 package page
 
-import "fmt"
-
 type Pagination interface {
 	Limit() (int, int)
-	OrderBy() string
+	OrderBy() (string, bool)
 	SetTotalItems(int)
 	Extract() map[string]interface{}
 }
@@ -21,11 +19,8 @@ func (p *pagination) Limit() (int, int) {
 	return p.RowsPerPage, (p.Page - 1) * p.RowsPerPage
 }
 
-func (p *pagination) OrderBy() string {
-	if p.Descending {
-		return fmt.Sprintf("%s DESC", p.SortBy)
-	}
-	return p.SortBy
+func (p *pagination) OrderBy() (string, bool) {
+	return p.SortBy, p.Descending
 }
 
 func (p *pagination) SetTotalItems(totalItems int) {
