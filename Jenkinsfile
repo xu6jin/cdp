@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('init') {
       steps {
-        tool 'jdk-11'
-        tool 'maven-3'
+        tool(name: 'jdk-11', type: 'jdk')
+        tool(name: 'maven-3', type: 'maven')
       }
     }
 
