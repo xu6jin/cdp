@@ -29,5 +29,40 @@ mvn  -version'''
       }
     }
 
+    stage('dev') {
+      parallel {
+        stage('dev') {
+          steps {
+            sh 'ls'
+          }
+        }
+
+        stage('test') {
+          steps {
+            sh 'ls'
+          }
+        }
+
+        stage('stage') {
+          steps {
+            sh 'ls'
+          }
+        }
+
+        stage('prrod') {
+          steps {
+            sh 'ls'
+          }
+        }
+
+      }
+    }
+
+    stage('done') {
+      steps {
+        sh 'ls'
+      }
+    }
+
   }
 }
