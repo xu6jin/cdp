@@ -5,12 +5,20 @@ pipeline {
       steps {
         tool(name: 'jdk-11', type: 'jdk')
         tool(name: 'maven-3', type: 'maven')
+        sh '''env
+
+java -version
+
+mvn  -version'''
       }
     }
 
     stage('build') {
       steps {
-        sh '''java -version
+        sh '''env
+
+java -version
+
 mvn  -version'''
       }
     }
