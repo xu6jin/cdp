@@ -65,4 +65,7 @@ mvn  -version'''
     }
 
   }
+  environment {
+    branch = ''
+  }
 }
